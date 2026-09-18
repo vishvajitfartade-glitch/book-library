@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <p class="tag">📚 VISHVAJIT – WEB DEVELOPMENT TRACK</p>
+        <h1>Book Library Tracker</h1>
+        <p class="subtitle">
+            Track your books, reading progress, ratings and library statistics.
+        </p>
+    </header>
+
+    <!-- Statistics -->
+    <section class="stats">
+        <div class="stat-card">
+            <span>📚</span>
+            <h3 id="totalBooks">0</h3>
+            <p>Total Books</p>
+        </div>
+
+        <div class="stat-card">
+            <span>✅</span>
+            <h3 id="readBooks">0</h3>
+            <p>Books Read</p>
+        </div>
+
+        <div class="stat-card">
+            <span>📖</span>
+            <h3 id="readingBooks">0</h3>
+            <p>Currently Reading</p>
+        </div>
+
+        <div class="stat-card">
+            <span>🔖</span>
+            <h3 id="wantBooks">0</h3>
+            <p>Want to Read</p>
+        </div>
+    </section>
+
+    <!-- Add Book -->
+    <section class="form-card">
+        <h2 id="formTitle">➕ Add New Book</h2>
+
+        <form id="bookForm">
+
+            <input type="hidden" id="bookId">
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Book Title</label>
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Enter book title"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Author</label>
+                    <input
+                        type="text"
+                        id="author"
+                        placeholder="Enter author name"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Status</label>
+                    <select id="status" required>
+                        <option value="want">Want to Read</option>
+                        <option value="reading">Currently Reading</option>
+                        <option value="read">Read</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Rating</label>
+                    <select id="rating">
+                        <option value="0">No Rating</option>
+                        <option value="1">⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="buttons">
+                <button type="submit" class="primary-btn" id="submitBtn">
+                    Add Book
+                </button>
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelBtn"
+                    onclick="cancelEdit()"
+                    hidden
+                >
+                    Cancel
+                </button>
+            </div>
+
+        </form>
+    </section>
+
+    <!-- Search and Sort -->
+    <section class="controls">
+
+        <input
+            type="search"
+            id="search"
+            placeholder="🔍 Search by title or author..."
+        >
+
+        <select id="sort">
+            <option value="default">Sort: Default</option>
+            <option value="title">Sort by Title</option>
+            <option value="author">Sort by Author</option>
+            <option value="ratingHigh">Rating: High to Low</option>
+            <option value="ratingLow">Rating: Low to High</option>
+        </select>
+
+    </section>
+
+    <!-- Status Tabs -->
+    <nav class="tabs">
+        <button class="tab active" data-status="all">
+            All <span id="allCount">0</span>
+        </button>
+
+        <button class="tab" data-status="read">
+            Read <span id="readCount">0</span>
+        </button>
+
+        <button class="tab" data-status="reading">
+            Reading <span id="readingCount">0</span>
+        </button>
+
+        <button class="tab" data-status="want">
+            Want to Read <span id="wantCount">0</span>
+        </button>
+    </nav>
+
+    <!-- Books -->
+    <section id="bookList" class="book-list"></section>
+
+    <div id="emptyMessage" class="empty">
+        <div>📚</div>
+        <h2>No books found</h2>
+        <p>Add your first book to start building your library.</p>
+    </div>
+
+</div>
+
+<footer>
+    <p>Book Library Tracker | HTML • CSS • JavaScript • LocalStorage</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
